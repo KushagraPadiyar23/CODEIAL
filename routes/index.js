@@ -10,5 +10,5 @@ router.use('/users', require('./users'));
 
 //for any further routes, access from here
 //router.use('/routername', require('./routerfile'));
-router.use('/users', require('./users'));
+//router.use('/users', require('./users'));
 module.exports=router;

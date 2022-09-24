@@ -7,3 +7,4 @@ module.exports.home=function(req,res){
 module.exports.posts=function(req,res){
     return res.end('<h1>you haven not posted anything yet</h1>');
 }
+
