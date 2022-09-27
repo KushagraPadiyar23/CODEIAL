@@ -7,12 +7,21 @@ module.exports.contact=function(req,res){
 }
 //render the sign up page
 module.exports.signUp=function(req,res){
+   if(req.isAuthenticated())
+   {
+    return res.redirect('/users/profile');
+   }
+   
     return res.render('user_sign_up',{
         title:"Codeial|SignUp"
     });
 }
 //render the sign in page
 module.exports.signIn=function(req,res){
+    if(req.isAuthenticated())
+   {
+    return res.redirect('/users/profile');
+   }
     return res.render('user_sign_in',{
         title:"Codeial|SignIn"
     });
@@ -48,5 +57,16 @@ module.exports.create=function(req,res){
 }
 //sign in and create the session for the user
 module.exports.createSession=function(req,res){
-    //todo later
+    return res.redirect('/users/profile'); //redirecting to profile page
+}
+
+//for signing/logging out
+module.exports.destroySession=function(req,res){
+   // req.logout(); //this function is given to request using passport.js
+   req.logout(function(err) {
+    if (err) { return next(err); }
+    
+    return res.redirect('/');
+  });
+    //return res.redirect('/');
 }
