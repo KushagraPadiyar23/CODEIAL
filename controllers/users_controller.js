@@ -74,6 +74,7 @@ module.exports.create=function(req,res){
 }
 //sign in and create the session for the user
 module.exports.createSession=function(req,res){
+    req.flash('Success','Logged In Successfully!');
     return res.redirect('/'); //redirecting to profile page
 }
 
@@ -82,7 +83,7 @@ module.exports.destroySession=function(req,res){
    // req.logout(); //this function is given to request using passport.js
    req.logout(function(err) {
     if (err) { return next(err); }
-    
+    req.flash('Success','You have Logged Out Successfully!');
     return res.redirect('/');
   });
     //return res.redirect('/');

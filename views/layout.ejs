@@ -3,6 +3,11 @@
         <title>
             <%= title %>
         </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <link rel="stylesheet" href="/CSS/layout.css">
         <link rel="stylesheet" href="/CSS/header.css">
         <link rel="stylesheet" href="/CSS/footer.css">
@@ -10,6 +15,10 @@
     </head>
     <body>
         <%- include("_header"); %>
+       
+            
+
+
         <main id="layout-main">
             <%- body %>
         </main>
@@ -17,5 +26,27 @@
         <%- include("_footer"); %>
 
         <%- script%>
+        <script>
+             <% if(flash.Success && flash.Success.length>0){%>
+                new Noty({
+                            theme: 'relax',
+                            text: "<%= flash.Success %>",
+                            layout: 'topRight',
+                            type: 'success',
+                            timeout: 1500
+
+                        }).show();
+             <%}%>
+             <% if(flash.error && flash.error.length>0){%>
+                new Noty({
+                            theme: 'relax',
+                            text: "<%= flash.error %>",
+                            layout: 'topRight',
+                            type: 'error',
+                            timeout: 1500
+
+                        }).show();
+             <%}%>     
+        </script>
     </body>
 </htlm>
